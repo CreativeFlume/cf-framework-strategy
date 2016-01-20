@@ -1,0 +1,25 @@
+{
+  "name": "cf-framework-strategy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "mocha '+(test|src)/**/*Spec.js'",
+    "test:watch": "npm run test -- --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "hapi": "^12.1.0",
+    "lodash": "^4.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "chai-http": "^1.0.0",
+    "mocha": "^2.3.4"
+  }
+}
