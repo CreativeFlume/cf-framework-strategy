@@ -37,7 +37,6 @@ let framework = new FrameworkStrategy({
   port: 3000
 });
 
-
 framework
   .start()
   .then(() => {
