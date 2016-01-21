@@ -12,10 +12,7 @@ class HapiFrameworkStrategy extends BaseFrameworkStrategy {
     super(Object.assign({}, config, {
       type: BaseFrameworkStrategy.constants.HAPI
     }));
-
-    this.type = BaseFrameworkStrategy.constants.HAPI;
     this.framework = require(BaseFrameworkStrategy.constants.HAPI);
-
     return this;
   }
 

@@ -6,8 +6,9 @@ const BaseFrameworkStrategy = require('../BaseFrameworkStrategy/BaseFrameworkStr
 class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
   
   constructor(config) {
-    super(config);
-    this.type = BaseFrameworkStrategy.constants.EXPRESS;
+    super(Object.assign({}, config, {
+      type: BaseFrameworkStrategy.constants.EXPRESS
+    }));
     this.framework = require(BaseFrameworkStrategy.constants.EXPRESS);
     this.app = this.framework();
     return this;

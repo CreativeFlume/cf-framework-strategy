@@ -1,5 +1,6 @@
 'use strict';
 
+let path = require('path');
 const constants = require('../config/constants');
 const baseUrl = 'http://localhost:4567';
 const frameworkStrategies = [
@@ -115,7 +116,7 @@ describe('All Framework Strategies', () => {
 
             framework.addRoute('/', {
               get: (request, respond) => {
-                respond.withFile('test/commonStrategySpec.js');
+                respond.withFile(path.join(__dirname, 'commonStrategySpec.js'));
               }   
             });
 
