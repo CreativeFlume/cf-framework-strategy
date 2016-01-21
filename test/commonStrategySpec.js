@@ -1,9 +1,11 @@
 'use strict';
 
-// describes the core behavior and interface 
-// all framework strategies should implement
-
 const constants = require('../config/constants');
+const baseUrl = 'http://localhost:4567';
+const frameworkStrategies = [
+  require('../src/strategies/ExpressFrameworkStrategy/ExpressFrameworkStrategy'),
+  require('../src/strategies/HapiFrameworkStrategy/HapiFrameworkStrategy')
+];
 
 process.env.NODE_ENV = constants.TEST_ENV;
 
@@ -11,11 +13,6 @@ let _ = require('lodash');
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let expect = chai.expect;
-let baseUrl = 'http://localhost:4567';
-let frameworkStrategies = [
-  require('../src/strategies/ExpressFrameworkStrategy/ExpressFrameworkStrategy'),
-  require('../src/strategies/HapiFrameworkStrategy/HapiFrameworkStrategy')
-];
 
 chai.use(chaiHttp);
 
@@ -24,10 +21,10 @@ describe('All Framework Strategies', () => {
   frameworkStrategies.forEach((strategy) => {
 
     let framework = new strategy();
-    let frameworkType = framework.getType(); 
+    let frameworkType = _.capitalize(framework.getType());
     framework.stop();
     
-    describe(_.capitalize(frameworkType) + ' Framework Strategy', () => {
+    describe(frameworkType + ' Framework Strategy', () => {
 
       beforeEach(() => {
         framework = new strategy({
@@ -45,6 +42,7 @@ describe('All Framework Strategies', () => {
         expect(typeof framework.start).to.equal('function');
         expect(typeof framework.stop).to.equal('function');
         expect(typeof framework.addRoute).to.equal('function');
+        expect(typeof framework.request).to.equal('function');
         expect(typeof framework.respond).to.equal('function');
       });
 
@@ -80,7 +78,79 @@ describe('All Framework Strategies', () => {
               });
           });
       });
+
+      it('should respond with a redirect', () => {
+      
+        return framework
+          .start()
+          .then(value => {
+
+            framework.addRoute('/abc', {
+              get: (request, respond) => {
+                respond.with(200, 'redirect successful');
+              }
+            })
+
+            framework.addRoute('/', {
+              get: (request, respond) => {
+                respond.with(302, '/abc');
+              }
+            });
+
+            return chai
+              .request(baseUrl)
+              .get('/')
+              .then(res => {
+                expect(res.status).to.equal(200);
+                expect(res.text).to.equal('redirect successful');
+              });
+          });
+      });
+
+      it('should respond with a file', () => {
+
+        return framework
+          .start()
+          .then(value => {
+
+            framework.addRoute('/', {
+              get: (request, respond) => {
+                respond.withFile('test/commonStrategySpec.js');
+              }   
+            });
+
+            return chai
+              .request(baseUrl)
+              .get('/')
+              .then((res) => {
+                expect(res.status).to.equal(200);
+              });
+          });
+      });
+
+      it('should return the requested path', () => {
+      
+        return framework
+          .start()
+          .then(value => {
+
+            let path;
+
+            framework.addRoute('/a/b', {
+              get: (request, respond) => {
+                path = request.getPath();
+                respond.with(200);
+              }
+            });
+
+            return chai
+              .request(baseUrl)
+              .get('/a/b')
+              .then(() => {
+                expect(path).to.equal('/a/b');
+              });
+          });
+      })
     });
   });
 });
-

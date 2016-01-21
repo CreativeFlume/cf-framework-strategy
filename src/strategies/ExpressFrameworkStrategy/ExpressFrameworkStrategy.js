@@ -1,5 +1,6 @@
 'use strict';
 
+let path = require('path');
 const BaseFrameworkStrategy = require('../BaseFrameworkStrategy/BaseFrameworkStrategy');
 
 class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
@@ -39,19 +40,41 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
         this.expressRequest = request;
         this.expressResponse = response;
         
-        config[method](this.request, this.respond())
+        config[method](this.request(), this.respond())
       });
     }
   }
 
+  request() {
+    return {
+      getPath: () => {
+        return this.expressRequest.url;
+      } 
+    };
+  }
+  
   respond() {
     return {
       with: (code, body) => {
+
+       if (code >= 300 && code <= 308) {
+         this
+           .expressResponse
+           .redirect(body);
+         return;
+       }
+
+       this
+         .expressResponse
+         .status(code)
+         .send(body);
+     },
+      
+      withFile: fileLocation => {
         this
           .expressResponse
-          .status(code)
-          .send(body);
-      } 
+          .sendFile(path.join(__dirname, '../../../', fileLocation));
+      }
     };
   }
 }
