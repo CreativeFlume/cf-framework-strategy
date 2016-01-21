@@ -54,6 +54,9 @@ class HapiFrameworkStrategy extends BaseFrameworkStrategy {
   }
 
   addRoute(path, config) {
+
+    path = path === '*' ? '/{path*}' : path;
+
     for (var method in config) {
       
       this.server.route({
