@@ -22,7 +22,7 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
     return new Promise(resolve => {
       this.server = this.app.listen(port, () => {
         superStart();
-        resolve(); 
+        resolve(this); 
       });
     });
   }

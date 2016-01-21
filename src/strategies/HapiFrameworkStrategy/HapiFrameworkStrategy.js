@@ -37,7 +37,7 @@ class HapiFrameworkStrategy extends BaseFrameworkStrategy {
 
         this.server.start(() => {
           superStart();
-          resolve();
+          resolve(this);
         });
 
       });

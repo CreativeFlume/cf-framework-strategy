@@ -58,6 +58,15 @@ describe('All Framework Strategies', () => {
            });
       });
 
+      it('returns promise resolved with framework upon start', () => {
+        
+        return framework
+          .start()
+          .then(fw => {
+            expect(fw).to.not.be.undefined; 
+          });
+      });
+
       it('should add and respond to a get route', () => {
       
         return framework
