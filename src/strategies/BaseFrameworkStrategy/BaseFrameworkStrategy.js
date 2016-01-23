@@ -36,7 +36,7 @@ class BaseFrameworkStrategy {
 BaseFrameworkStrategy.constants = {
   EXPRESS: 'express',
   HAPI: 'hapi',
-  DEFAULT_PORT: 3000
+  DEFAULT_PORT: 80
 };
 
 module.exports = BaseFrameworkStrategy;
