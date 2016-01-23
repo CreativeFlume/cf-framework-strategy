@@ -22,7 +22,7 @@ framework
 
     framework.addRoute('/', {
       get: (request, respond) => {
-        respond.with(200, 'Hello World');
+        respond.with(200, 'Hello Express');
       }
     });
 
@@ -43,7 +43,7 @@ framework
 
     framework.addRoute('/', {
       get: (request, respond) => {
-        respond.with(200, 'Hello World');
+        respond.with(200, 'Hello Hapi');
       }
     });
 
