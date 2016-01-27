@@ -1,7 +1,7 @@
 {
   "name": "cf-framework-strategy",
   "version": "0.1.0",
-  "description": "",
+  "description": "A Minimalist Node.js Framework Abstraction",
   "main": "src/app.js",
   "directories": {
     "example": "examples"
