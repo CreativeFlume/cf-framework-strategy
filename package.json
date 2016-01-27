@@ -1,6 +1,6 @@
 {
   "name": "cf-framework-strategy",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "src/app.js",
   "directories": {
@@ -10,8 +10,8 @@
     "test": "mocha '+(test|src)/**/*Spec.js'",
     "test:watch": "npm run test -- --watch"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Richard Harrington",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.13.3",
     "hapi": "^12.1.0",
