@@ -2,11 +2,21 @@
 
 ### A Minimalist Node.js Framework Abstraction
 
+** Work in Progress**
+
 This abstraction provides a clean
 interface such that if a framework introduces breaking
 changes (perhaps to affect performance), your application
 code is utilizing a clean and unchanging interface. Then we 
 can easily port our client applications to the newest version.
+
+### Assumes ES6
+
+It's assumed you have a transpilation method. Refer to 
+[this](http://stackoverflow.com/questions/35040978/babel-unexpected-token-import-when-running-mocha-tests)
+stackoverflow post for an example using babel-core/register for runtime transpilation.
+
+ 
 
 ### Example Express Usage
 ```
