@@ -14,7 +14,8 @@ can easily port our client applications to the newest version.
 
 It's assumed you have a transpilation method. Refer to 
 [this](http://stackoverflow.com/questions/35040978/babel-unexpected-token-import-when-running-mocha-tests)
-stackoverflow post for an example using babel-core/register for runtime transpilation.
+stackoverflow post for an example using babel-core/register for runtime transpilation. This will solve the
+commonly seen `unexpected token import` error.
 
  
 
