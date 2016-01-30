@@ -60,3 +60,8 @@ framework
 
   });
 ```
+
+### Responding With a File
+```
+  respond.withFile(location);
+```
