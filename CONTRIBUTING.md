@@ -2,10 +2,7 @@
 
 ## Unit tests
 
-Ensure mocha is installed globally.
+Ensure mocha is installed globally with `npm install mocha`.
 
-`npm install mocha`
-
-Run the unit tests:
-
+Run the unit tests with:
 `npm run test` or `npm run test:watch` to run on changes.
