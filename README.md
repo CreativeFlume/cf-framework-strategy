@@ -5,8 +5,8 @@
 ** Work in Progress**
 
 This node web framework abstraction strives to provide a consistent, pragmatic, and smart
-*standard* for interacting with the node http server through various high performing frameworks
-such as Express and Hapi.
+*standard* for interacting with node's native http module through the various competing high 
+performing frameworks such as Express and Hapi.
 
 Why is it that with every new major framework version, we are left with painful
 code rewriting? How come when you start a new project and you decide on a different
@@ -46,7 +46,6 @@ It's assumed you have a transpilation method. Refer to
 stackoverflow post for an example using babel-core/register for runtime transpilation. This will solve the
 commonly seen `unexpected token import` error.
 
- 
 
 ### Example Express Usage
 ```
