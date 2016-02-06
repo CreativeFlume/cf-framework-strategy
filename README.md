@@ -32,7 +32,7 @@ YourProjectB__/                           \__Hapi
 ```
 
 Perhaps this project will grow into a number of separate libraries all inheriting from some base
-interface; this way, different versionings of each framework can be supported exclusive to each other
+interface; this way, different versionings of each framework can be supported exclusive to each other.
 If community backing ever grows on this, that is a real consideration, but for now, I'm hapi, err, I mean
 happy with the latest versions of every framework I use.
 
