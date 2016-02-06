@@ -62,7 +62,7 @@ framework
   .then(() => {
 
     framework.addRoute('/', {
-      get: (request, respond) => {
+      post: (request, respond) => {
         console.log(request.getBody());
         respond.with(200, 'Hello Express');
       }
@@ -84,7 +84,7 @@ framework
   .then(() => {
 
     framework.addRoute('/', {
-      get: (request, respond) => {
+      post: (request, respond) => {
         console.log(request.getBody());
         respond.with(200, 'Hello Hapi');
       }
