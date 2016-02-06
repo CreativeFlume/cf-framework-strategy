@@ -22,7 +22,7 @@ a primary goal.
 In the case where a framework interface *must* change due to some performance (or security) implication,
 you can be confident that your client projects can be updated with a quick change in dependency.
 
-Meet *cf-framework-abstraction*. It goes a little something like this:
+Meet *cf-framework-strategy*. It goes a little something like this:
 
 ```
 YourProjectA__                             __Express
