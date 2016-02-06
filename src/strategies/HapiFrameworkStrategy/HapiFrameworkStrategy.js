@@ -75,6 +75,9 @@ class HapiFrameworkStrategy extends BaseFrameworkStrategy {
     return {
       getPath: () => {
         return this.hapiRequest.url.path;
+      },
+      getBody: () => {
+        return this.hapiRequest.payload; 
       } 
     }; 
   }

@@ -1,6 +1,7 @@
 'use strict';
 
 let path = require('path');
+const bodyParser = require('body-parser');
 const BaseFrameworkStrategy = require('../BaseFrameworkStrategy/BaseFrameworkStrategy');
 
 class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
@@ -20,6 +21,7 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
     let port = this.config.port || BaseFrameworkStrategy.constants.DEFAULT_PORT;
 
     return new Promise(resolve => {
+      this.app.use(bodyParser.json());
       this.server = this.app.listen(port, () => {
         superStart();
         resolve(this); 
@@ -34,6 +36,7 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
   }
 
   addRoute(path, config) {
+
     for (var method in config) {
     
       this.app[method](path, (request, response) => {
@@ -50,7 +53,10 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
     return {
       getPath: () => {
         return this.expressRequest.url;
-      } 
+      },
+      getBody: () => {
+        return this.expressRequest.body; 
+      }
     };
   }
   

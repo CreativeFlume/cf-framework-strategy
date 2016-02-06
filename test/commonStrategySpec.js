@@ -89,6 +89,36 @@ describe('All Framework Strategies', () => {
           });
       });
 
+
+    it('should respond with a payload body', () => {
+
+      const body = {
+        name: 'Richard',
+        email: 'test@test.com' 
+      };
+
+      let resBody = {};
+
+      return framework
+        .start()
+        .then(value => {
+
+          framework.addRoute('/', {
+            post: (request, respond) => {
+              resBody = request.getBody();
+              respond.with(200);
+            } 
+          });
+
+          return chai
+            .request(baseUrl)
+            .post('/')
+            .send(body)
+            .then(res => {
+              expect(resBody).to.eql(body);
+            });
+        });
+    });
       it('should respond with a redirect', () => {
       
         return framework

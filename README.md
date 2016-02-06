@@ -20,7 +20,10 @@ I would argue, the interface should be decoupled from this *ANYWAYS*, consistenc
 a primary goal.
 
 In the case where a framework interface *must* change due to some performance (or security) implication,
-you can be confident that your client projects can be updated with a quick change in dependency.
+you can be confident that your client projects can be updated with a quick change in dependency. Another
+benefit is the ability to load test your application on various leading frameworks at the click
+of a button, as well as go back in time and try new framework versions out on older code in order
+to compare performance.
 
 Meet *cf-framework-strategy*. It goes a little something like this:
 
@@ -60,6 +63,7 @@ framework
 
     framework.addRoute('/', {
       get: (request, respond) => {
+        console.log(request.getBody());
         respond.with(200, 'Hello Express');
       }
     });
@@ -81,6 +85,7 @@ framework
 
     framework.addRoute('/', {
       get: (request, respond) => {
+        console.log(request.getBody());
         respond.with(200, 'Hello Hapi');
       }
     });
