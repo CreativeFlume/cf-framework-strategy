@@ -39,9 +39,6 @@ interface; this way, different versionings of each framework can be supported ex
 If community backing ever grows on this, that is a real consideration, but for now, I'm hapi, err, I mean
 happy with the latest versions of every framework I use.
 
-I am not vocal about marketing this idea, but if you came across this on NPM, I invite you to try it out
-and contribute.  It may prove worth your while.
-
 ### Assumes ES6
 
 It's assumed you have a transpilation method. Refer to 
