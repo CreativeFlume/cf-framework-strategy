@@ -8,11 +8,11 @@ class BaseFrameworkStrategy {
 
   constructor(config) {
     this.config = config;
-    this._isStarted = false;
+    this.forceHttps = config.https && config.https.force === true;
   }
 
   getType() {
-    return this.type; 
+    return this.config.type; 
   }
 
   isStarted() {
@@ -22,11 +22,20 @@ class BaseFrameworkStrategy {
   start() {
 
     if (process.env.NODE_ENV !== constants.TEST_ENV) {
-      console.log(`
 
-        ${_.capitalize(this.config.type)} server started on port ${this.config.port || BaseFrameworkStrategy.constants.DEFAULT_PORT} 
+      if (this.forceHttps) {
+        console.log(`
 
-      `);
+          ${_.capitalize(this.config.type)} server redirecting http port ${this.config.http.port} to ${this.config.https.port}
+
+        `); 
+      } else {
+        console.log(`
+
+          ${_.capitalize(this.config.type)} server started on port ${this.config.port || BaseFrameworkStrategy.constants.DEFAULT_PORT} 
+
+        `);
+      }
     }
 
     this._isStarted = true;

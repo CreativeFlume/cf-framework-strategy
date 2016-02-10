@@ -16,9 +16,20 @@ class HapiFrameworkStrategy extends BaseFrameworkStrategy {
     return this;
   }
 
+  forceSecure(request, reply) {
+    if (request.connection.info.protocol !== 'https') {
+      return reply()
+        .redirect('https://' + request.headers.host + request.url.path)
+        .code(301);
+    } 
+    reply.continue();
+  }
+
   start() {
 
     let superStart = super.start.bind(this);
+    let port = (this.config.http && this.config.http.port) || 
+      BaseFrameworkStrategy.constants.DEFAULT_PORT;
 
     this.server = new this.framework.Server();
 
@@ -32,14 +43,24 @@ class HapiFrameworkStrategy extends BaseFrameworkStrategy {
 
         this.server.connection({
           host: 'localhost',
-          port: this.config.port || BaseFrameworkStrategy.constants.DEFAULT_PORT
+          port: port
         });
+
+        if (this.forceHttps) {
+
+          this.server.connection({
+            host: '0.0.0.0',
+            port: this.config.https.port,
+            tls: this.config.https.options  
+          });
+
+          this.server.ext('onRequest', this.forceSecure.bind(this));
+        }
 
         this.server.start(() => {
           superStart();
           resolve(this);
         });
-
       });
     });
   }
@@ -47,6 +68,7 @@ class HapiFrameworkStrategy extends BaseFrameworkStrategy {
   stop() {
     if (this.isStarted()) {
       this.server.root.stop();
+      this._isStarted = false;
     }
   }
 
@@ -55,7 +77,7 @@ class HapiFrameworkStrategy extends BaseFrameworkStrategy {
     path = path === '*' ? '/{path*}' : path;
 
     for (var method in config) {
-      
+     
       this.server.route({
         path: path,
         method: method.toUpperCase(),

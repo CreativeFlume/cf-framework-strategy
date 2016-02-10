@@ -52,7 +52,9 @@ commonly seen `unexpected token import` error.
 let FrameworkStrategy = require('cf-framework-strategy').express;
 
 let framework = new FrameworkStrategy({
-  port: 3000
+  http: {
+    port: 3000
+  }
 });
 
 framework
@@ -73,7 +75,9 @@ framework
 let FrameworkStrategy = require('cf-framework-strategy').hapi;
 
 let framework = new FrameworkStrategy({
-  port: 3000
+  http: {
+    port: 3000
+  }
 });
 
 framework
@@ -93,4 +97,19 @@ framework
 ### Responding With a File
 ```
   respond.withFile(location);
+```
+
+### Forcing HTTPS
+This will redirect all http requests to https. You may define the
+ports of each as follows:
+```
+let framework = new FrameworkStrategy({
+  http: {
+    port: 80
+  },
+  https: {
+    force: true,
+    port: 443
+  }
+});
 ```
