@@ -58,6 +58,7 @@ let framework = new FrameworkStrategy({
 });
 
 framework
+  .start()
   .then(() => {
 
     framework.addRoute('/', {
