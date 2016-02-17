@@ -2,13 +2,14 @@
   "name": "cf-framework-strategy",
   "version": "1.2.0",
   "description": "A Minimalist Node.js Framework Abstraction",
-  "main": "src/app.js",
+  "main": "dist/app.js",
   "directories": {
     "example": "examples"
   },
   "scripts": {
     "test": "mocha '+(test|src)/**/*Spec.js'",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "build": "babel src --out-dir dist"
   },
   "author": "Richard Harrington",
   "license": "MIT",
@@ -24,6 +25,8 @@
     "lodash": "^4.0.0"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.4.1",
     "chai-http": "^1.0.0",
     "mocha": "^2.3.4",
