@@ -1,6 +1,9 @@
 'use strict';
 
+let express = require('./strategies/ExpressFrameworkStrategy/ExpressFrameworkStrategy');
+let hapi = require('./strategies/HapiFrameworkStrategy/HapiFrameworkStrategy');
+
 module.exports = {
-  express: require('./strategies/ExpressFrameworkStrategy/ExpressFrameworkStrategy'),
-  hapi: require('./strategies/HapiFrameworkStrategy/HapiFrameworkStrategy')
+  express: express,
+  hapi: hapi
 };
