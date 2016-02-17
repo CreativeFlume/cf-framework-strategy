@@ -1,9 +1,7 @@
-'use strict';
-
-const constants = require('../../../config/constants');
-const BaseFrameworkStrategy = require('../BaseFrameworkStrategy/BaseFrameworkStrategy');
-
-let inert = require('inert');
+import inert from 'inert';
+import constants from '../../../config/constants';
+import BaseFrameworkStrategy from '../BaseFrameworkStrategy/BaseFrameworkStrategy';
+import hapi from 'hapi';
 
 class HapiFrameworkStrategy extends BaseFrameworkStrategy {
   
@@ -12,7 +10,7 @@ class HapiFrameworkStrategy extends BaseFrameworkStrategy {
     super(Object.assign({}, config, {
       type: BaseFrameworkStrategy.constants.HAPI
     }));
-    this.framework = require(BaseFrameworkStrategy.constants.HAPI);
+    this.framework = hapi;
     return this;
   }
 

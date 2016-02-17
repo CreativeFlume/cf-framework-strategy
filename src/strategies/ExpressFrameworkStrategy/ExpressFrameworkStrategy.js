@@ -1,10 +1,11 @@
 'use strict';
 
-let http = require('http');
-let https = require('https');
-let path = require('path');
-const bodyParser = require('body-parser');
-const BaseFrameworkStrategy = require('../BaseFrameworkStrategy/BaseFrameworkStrategy');
+import http from 'http';
+import https from 'https';
+import path from 'path';
+import bodyParser from 'body-parser';
+import BaseFrameworkStrategy from '../BaseFrameworkStrategy/BaseFrameworkStrategy';
+import express from 'express';
 
 class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
   
@@ -12,7 +13,7 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
     super(Object.assign({}, {
       type: BaseFrameworkStrategy.constants.EXPRESS
     }, config));
-    this.framework = require(BaseFrameworkStrategy.constants.EXPRESS);
+    this.framework = express;
     this.app = this.framework();
     return this;
   }
