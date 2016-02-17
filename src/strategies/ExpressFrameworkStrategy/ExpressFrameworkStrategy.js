@@ -31,6 +31,10 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
     let port = (me.config.http && me.config.http.port) || 
       BaseFrameworkStrategy.constants.DEFAULT_PORT;
 
+    if (me.config.serveStatic) {
+      me.app.use(me.framework.static(me.config.serveStatic));
+    }
+
     me.app.use(bodyParser.json());
     if (me.forceHttps) {
       me.app.use(me.forceSecure.bind(me));
