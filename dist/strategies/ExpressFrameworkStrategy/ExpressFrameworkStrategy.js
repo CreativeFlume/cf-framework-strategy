@@ -152,8 +152,10 @@ var ExpressFrameworkStrategy = (function (_BaseFrameworkStrateg) {
           _this4.expressResponse.status(code).send(body);
         },
 
-        withFile: function withFile(fileLocation) {
-          _this4.expressResponse.sendFile(fileLocation);
+        withFile: function withFile(fileName, fileLocation) {
+          _this4.expressResponse.sendFile(fileName, {
+            root: fileLocation
+          });
         }
       };
     }
