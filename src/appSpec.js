@@ -1,7 +1,7 @@
 'use strict';
 
 var expect = require('chai').expect;
-var app = require('./app');
+var app = require('../dist/app');
 
 describe('app', () => {
   it('exposes express strategy', () => {

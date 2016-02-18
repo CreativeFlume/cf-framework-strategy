@@ -5,8 +5,8 @@ let pem = require('pem');
 let path = require('path');
 const constants = require('../config/constants');
 const frameworkStrategies = [
-  require('../src/strategies/ExpressFrameworkStrategy/ExpressFrameworkStrategy'),
-  require('../src/strategies/HapiFrameworkStrategy/HapiFrameworkStrategy')
+  require('../dist/strategies/ExpressFrameworkStrategy/ExpressFrameworkStrategy'),
+  require('../dist/strategies/HapiFrameworkStrategy/HapiFrameworkStrategy')
 ];
 
 process.env.NODE_ENV = constants.TEST_ENV;

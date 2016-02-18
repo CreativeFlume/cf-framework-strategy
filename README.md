@@ -39,14 +39,6 @@ interface; this way, different versionings of each framework can be supported ex
 If community backing ever grows on this, that is a real consideration, but for now, I'm hapi, err, I mean
 happy with the latest versions of every framework I use.
 
-### Assumes ES6
-
-It's assumed you have a transpilation method. Refer to 
-[this](http://stackoverflow.com/questions/35040978/babel-unexpected-token-import-when-running-mocha-tests)
-stackoverflow post for an example using babel-core/register for runtime transpilation. This will solve the
-commonly seen `unexpected token import` error.
-
-
 ### Example Express Usage
 ```
 let FrameworkStrategy = require('cf-framework-strategy').express;
@@ -109,8 +101,12 @@ let framework = new FrameworkStrategy({
     port: 80
   },
   https: {
+    port: 443,
     force: true,
-    port: 443
+    options: {
+      key: fs.readFileSync('./ssl/my.key'),
+      cert: fs.readFileSync('./ssl/my.crt')
+    }
   }
 });
 ```
