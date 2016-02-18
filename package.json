@@ -12,6 +12,7 @@
     "build": "babel src --out-dir dist"
   },
   "author": "Richard Harrington",
+  "homepage": "https://creativeflume.com",
   "license": "MIT",
   "repository": {
     "type": "git",
