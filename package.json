@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
     "express": "^4.13.3",
     "hapi": "^12.1.0",
     "inert": "^3.2.0",

@@ -4,6 +4,7 @@ import http from 'http';
 import https from 'https';
 import path from 'path';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import BaseFrameworkStrategy from '../BaseFrameworkStrategy/BaseFrameworkStrategy';
 import express from 'express';
 
@@ -37,6 +38,7 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
     }
 
     me.app.use(bodyParser.json());
+    me.app.use(cookieParser);
     if (me.forceHttps) {
       me.app.use(me.forceSecure.bind(me));
     }
@@ -95,6 +97,9 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
       },
       getBody: () => {
         return this.expressRequest.body; 
+      },
+      getCookies: () => {
+        return this.expressRequest.cookies; 
       }
     };
   }

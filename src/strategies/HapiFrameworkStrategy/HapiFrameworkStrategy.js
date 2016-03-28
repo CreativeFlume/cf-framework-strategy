@@ -98,7 +98,10 @@ class HapiFrameworkStrategy extends BaseFrameworkStrategy {
       },
       getBody: () => {
         return this.hapiRequest.payload; 
-      } 
+      },
+      getCookies: () => {
+        return this.hapiRequest.state; 
+      }
     }; 
   }
 
