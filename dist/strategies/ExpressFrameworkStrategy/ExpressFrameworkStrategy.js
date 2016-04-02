@@ -79,6 +79,7 @@ var ExpressFrameworkStrategy = (function (_BaseFrameworkStrateg) {
 
       me.app.use(_bodyParser2.default.json());
       me.app.use(_cookieParser2.default);
+
       if (me.forceHttps) {
         me.app.use(me.forceSecure.bind(me));
       }

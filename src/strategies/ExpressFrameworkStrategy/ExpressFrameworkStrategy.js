@@ -39,6 +39,7 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
 
     me.app.use(bodyParser.json());
     me.app.use(cookieParser);
+
     if (me.forceHttps) {
       me.app.use(me.forceSecure.bind(me));
     }
