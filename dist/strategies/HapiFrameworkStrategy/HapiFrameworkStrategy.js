@@ -134,6 +134,9 @@ var HapiFrameworkStrategy = (function (_BaseFrameworkStrateg) {
         },
         getBody: function getBody() {
           return _this4.hapiRequest.payload;
+        },
+        getCookies: function getCookies() {
+          return _this4.hapiRequest.state;
         }
       };
     }

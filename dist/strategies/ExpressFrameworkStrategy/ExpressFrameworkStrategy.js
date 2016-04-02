@@ -20,6 +20,10 @@ var _bodyParser = require('body-parser');
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
+var _cookieParser = require('cookie-parser');
+
+var _cookieParser2 = _interopRequireDefault(_cookieParser);
+
 var _BaseFrameworkStrategy = require('../BaseFrameworkStrategy/BaseFrameworkStrategy');
 
 var _BaseFrameworkStrategy2 = _interopRequireDefault(_BaseFrameworkStrategy);
@@ -74,6 +78,7 @@ var ExpressFrameworkStrategy = (function (_BaseFrameworkStrateg) {
       }
 
       me.app.use(_bodyParser2.default.json());
+      me.app.use(_cookieParser2.default);
       if (me.forceHttps) {
         me.app.use(me.forceSecure.bind(me));
       }
@@ -133,6 +138,9 @@ var ExpressFrameworkStrategy = (function (_BaseFrameworkStrateg) {
         },
         getBody: function getBody() {
           return _this3.expressRequest.body;
+        },
+        getCookies: function getCookies() {
+          return _this3.expressRequest.cookies;
         }
       };
     }
