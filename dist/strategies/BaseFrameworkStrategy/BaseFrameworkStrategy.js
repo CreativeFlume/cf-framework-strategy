@@ -35,7 +35,7 @@ var BaseFrameworkStrategy = (function () {
         if (this.forceHttps) {
           console.log('\n\n          ' + _.capitalize(this.config.type) + ' server redirecting http port ' + this.config.http.port + ' to ' + this.config.https.port + '\n\n        ');
         } else {
-          console.log('\n\n          ' + _.capitalize(this.config.type) + ' server started on port ' + (this.config.port || BaseFrameworkStrategy.constants.DEFAULT_PORT) + ' \n\n        ');
+          console.log('\n\n          ' + _.capitalize(this.config.type) + ' server started on port ' + (this.config.http.port || BaseFrameworkStrategy.constants.DEFAULT_PORT) + ' \n\n        ');
         }
       }
 

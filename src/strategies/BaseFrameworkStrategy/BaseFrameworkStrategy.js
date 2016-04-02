@@ -32,7 +32,7 @@ class BaseFrameworkStrategy {
       } else {
         console.log(`
 
-          ${_.capitalize(this.config.type)} server started on port ${this.config.port || BaseFrameworkStrategy.constants.DEFAULT_PORT} 
+          ${_.capitalize(this.config.type)} server started on port ${this.config.http.port || BaseFrameworkStrategy.constants.DEFAULT_PORT} 
 
         `);
       }
