@@ -92,6 +92,11 @@ framework
   respond.withFile(location);
 ```
 
+### Get Object of Cookies
+```
+  request.getCookies();
+```
+
 ### Forcing HTTPS
 This will redirect all http requests to https. You may define the
 ports of each as follows:
