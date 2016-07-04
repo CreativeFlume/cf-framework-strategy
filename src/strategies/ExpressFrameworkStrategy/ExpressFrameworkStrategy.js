@@ -37,6 +37,14 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
       me.app.use(me.framework.static(me.config.serveStatic));
     }
 
+    if (me.config.cors) {
+      me.app.use((req, res, next) => {
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+        next();
+      });
+    }
+
     me.app.use(bodyParser.json());
     me.app.use(cookieParser());
 

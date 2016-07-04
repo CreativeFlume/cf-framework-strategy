@@ -55,6 +55,12 @@ class HapiFrameworkStrategy extends BaseFrameworkStrategy {
           this.server.ext('onRequest', this.forceSecure.bind(this));
         }
 
+        if (this.config.cors) {
+          this.server.connection.routes = {
+            cors: true 
+          } 
+        }
+
         this.server.start(() => {
           superStart();
           resolve(this);

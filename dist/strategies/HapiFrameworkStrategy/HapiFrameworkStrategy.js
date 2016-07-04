@@ -86,6 +86,12 @@ var HapiFrameworkStrategy = (function (_BaseFrameworkStrateg) {
             _this2.server.ext('onRequest', _this2.forceSecure.bind(_this2));
           }
 
+          if (_this2.config.cors) {
+            _this2.server.connection.routes = {
+              cors: true
+            };
+          }
+
           _this2.server.start(function () {
             superStart();
             resolve(_this2);

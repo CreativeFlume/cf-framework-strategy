@@ -77,6 +77,14 @@ var ExpressFrameworkStrategy = (function (_BaseFrameworkStrateg) {
         me.app.use(me.framework.static(me.config.serveStatic));
       }
 
+      if (me.config.cors) {
+        me.app.use(function (req, res, next) {
+          res.header('Access-Control-Allow-Origin', '*');
+          res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+          next();
+        });
+      }
+
       me.app.use(_bodyParser2.default.json());
       me.app.use((0, _cookieParser2.default)());
 
