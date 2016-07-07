@@ -159,6 +159,11 @@ var ExpressFrameworkStrategy = (function (_BaseFrameworkStrateg) {
       var _this4 = this;
 
       return {
+        setCookie: function setCookie(name, value, opts) {
+          _this4.expressResponse.cookie(name, value, opts);
+
+          return _this4;
+        },
         with: function _with(code, body) {
 
           if (code >= 300 && code <= 308) {

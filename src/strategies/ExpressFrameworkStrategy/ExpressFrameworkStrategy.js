@@ -115,6 +115,13 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
   
   respond() {
     return {
+      setCookie: (name, value, opts) => {
+        this
+          .expressResponse
+          .cookie(name, value, opts);
+
+        return this;
+      },
       with: (code, body) => {
 
        if (code >= 300 && code <= 308) {
