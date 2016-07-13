@@ -115,6 +115,11 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
   
   respond() {
     return {
+      removeCookie: (name, opts) => {
+        this
+          .expressResponse
+          .clearCookie(name, opts);
+      },
       setCookie: (name, value, opts) => {
         this
           .expressResponse

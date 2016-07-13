@@ -159,6 +159,9 @@ var ExpressFrameworkStrategy = (function (_BaseFrameworkStrateg) {
       var _this4 = this;
 
       return {
+        removeCookie: function removeCookie(name, opts) {
+          _this4.expressResponse.clearCookie(name, opts);
+        },
         setCookie: function setCookie(name, value, opts) {
           _this4.expressResponse.cookie(name, value, opts);
 
