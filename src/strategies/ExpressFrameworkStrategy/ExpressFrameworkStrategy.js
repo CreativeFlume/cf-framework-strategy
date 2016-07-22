@@ -33,6 +33,12 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
     let port = (me.config.http && me.config.http.port) || 
       BaseFrameworkStrategy.constants.DEFAULT_PORT;
 
+    if (me.config.helmet) {
+      me.app.use(require('helmet')({
+        hsts: false 
+      })); 
+    }
+
     if (me.config.serveStatic) {
       me.app.use(me.framework.static(me.config.serveStatic));
     }

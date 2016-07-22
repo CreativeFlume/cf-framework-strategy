@@ -73,6 +73,12 @@ var ExpressFrameworkStrategy = (function (_BaseFrameworkStrateg) {
       var superStart = _get(Object.getPrototypeOf(ExpressFrameworkStrategy.prototype), 'start', this).bind(me);
       var port = me.config.http && me.config.http.port || _BaseFrameworkStrategy2.default.constants.DEFAULT_PORT;
 
+      if (me.config.helmet) {
+        me.app.use(require('helmet')({
+          hsts: false
+        }));
+      }
+
       if (me.config.serveStatic) {
         me.app.use(me.framework.static(me.config.serveStatic));
       }
