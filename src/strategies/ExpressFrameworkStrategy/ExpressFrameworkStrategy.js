@@ -134,11 +134,9 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
      },
       
       withFile: (fileName, fileLocation) => {
-        this
-          .expressResponse
-          .sendFile(fileName, {
-            root: fileLocation
-          });
+        response.sendFile(fileName, {
+          root: fileLocation 
+        });
       }
     };
   }

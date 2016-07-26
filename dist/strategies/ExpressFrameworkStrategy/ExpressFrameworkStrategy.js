@@ -176,7 +176,7 @@ var ExpressFrameworkStrategy = (function (_BaseFrameworkStrateg) {
         },
 
         withFile: function withFile(fileName, fileLocation) {
-          _this3.expressResponse.sendFile(fileName, {
+          response.sendFile(fileName, {
             root: fileLocation
           });
         }
