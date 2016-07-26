@@ -143,7 +143,7 @@ var ExpressFrameworkStrategy = (function (_BaseFrameworkStrateg) {
     value: function request(_request) {
       return {
         getPath: function getPath() {
-          return _request.expressRequest.url;
+          return _request.url;
         },
         getBody: function getBody() {
           return _request.body;
