@@ -96,56 +96,41 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
     for (var method in config) {
     
       this.app[method](path, (request, response) => {
-
-        this.expressRequest = request;
-        this.expressResponse = response;
-        
-        config[method](this.request(), this.respond())
+        config[method](this.request(request), this.respond(response));
       });
     }
   }
 
-  request() {
+  request(request) {
     return {
       getPath: () => {
-        return this.expressRequest.url;
+        return request.expressRequest.url;
       },
       getBody: () => {
-        return this.expressRequest.body; 
+        return request.body; 
       },
       getCookies: () => {
-        return this.expressRequest.cookies; 
+        return request.cookies; 
       }
     };
   }
   
-  respond() {
+  respond(response) {
     return {
       removeCookie: (name, opts) => {
-        this
-          .expressResponse
-          .clearCookie(name, opts);
+        response.clearCookie(name, opts);
+        return this;
       },
       setCookie: (name, value, opts) => {
-        this
-          .expressResponse
-          .cookie(name, value, opts);
-
+        response.cookie(name, value, opts);
         return this;
       },
       with: (code, body) => {
-
        if (code >= 300 && code <= 308) {
-         this
-           .expressResponse
-           .redirect(body);
+         response.redirect(body);
          return;
        }
-
-       this
-         .expressResponse
-         .status(code)
-         .send(body);
+       response.status(code).send(body);
      },
       
       withFile: (fileName, fileLocation) => {

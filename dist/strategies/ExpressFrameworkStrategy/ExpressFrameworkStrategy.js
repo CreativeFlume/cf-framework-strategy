@@ -134,57 +134,49 @@ var ExpressFrameworkStrategy = (function (_BaseFrameworkStrateg) {
       for (var method in config) {
 
         this.app[method](path, function (request, response) {
-
-          _this2.expressRequest = request;
-          _this2.expressResponse = response;
-
-          config[method](_this2.request(), _this2.respond());
+          config[method](_this2.request(request), _this2.respond(response));
         });
       }
     }
   }, {
     key: 'request',
-    value: function request() {
-      var _this3 = this;
-
+    value: function request(_request) {
       return {
         getPath: function getPath() {
-          return _this3.expressRequest.url;
+          return _request.expressRequest.url;
         },
         getBody: function getBody() {
-          return _this3.expressRequest.body;
+          return _request.body;
         },
         getCookies: function getCookies() {
-          return _this3.expressRequest.cookies;
+          return _request.cookies;
         }
       };
     }
   }, {
     key: 'respond',
-    value: function respond() {
-      var _this4 = this;
+    value: function respond(response) {
+      var _this3 = this;
 
       return {
         removeCookie: function removeCookie(name, opts) {
-          _this4.expressResponse.clearCookie(name, opts);
+          response.clearCookie(name, opts);
+          return _this3;
         },
         setCookie: function setCookie(name, value, opts) {
-          _this4.expressResponse.cookie(name, value, opts);
-
-          return _this4;
+          response.cookie(name, value, opts);
+          return _this3;
         },
         with: function _with(code, body) {
-
           if (code >= 300 && code <= 308) {
-            _this4.expressResponse.redirect(body);
+            response.redirect(body);
             return;
           }
-
-          _this4.expressResponse.status(code).send(body);
+          response.status(code).send(body);
         },
 
         withFile: function withFile(fileName, fileLocation) {
-          _this4.expressResponse.sendFile(fileName, {
+          _this3.expressResponse.sendFile(fileName, {
             root: fileLocation
           });
         }
