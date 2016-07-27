@@ -106,8 +106,8 @@ class ExpressFrameworkStrategy extends BaseFrameworkStrategy {
       getPath: () => request.url,
       getBody: () => request.body,
       getCookies: () => request.cookies,
-      getInfo: () => request.info,
-      getHeaders: () => request.headers
+      getHeaders: () => request.headers,
+      getIp: () => request.ip
     };
   }
   

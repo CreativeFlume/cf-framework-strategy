@@ -151,11 +151,11 @@ var ExpressFrameworkStrategy = (function (_BaseFrameworkStrateg) {
         getCookies: function getCookies() {
           return _request.cookies;
         },
-        getInfo: function getInfo() {
-          return _request.info;
-        },
         getHeaders: function getHeaders() {
           return _request.headers;
+        },
+        getIp: function getIp() {
+          return _request.ip;
         }
       };
     }
